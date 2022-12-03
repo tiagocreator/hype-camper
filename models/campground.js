@@ -16,7 +16,7 @@ const CampgroundSchema = Schema({
   },
   image: {
     type: String,
-  }
+  },
 });
 
 module.exports = mongoose.model('Campground', CampgroundSchema);
