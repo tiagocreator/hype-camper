@@ -8,7 +8,6 @@ const ejsMate = require('ejs-mate');
 const catchAsync = require('./utilities/CatchAsync');
 const ExpressError = require('./utilities/ExpressError');
 const Review = require('./models/review');
-const campground = require('./models/campground');
 
 main().catch((err) => console.log('Error: ', err));
 
