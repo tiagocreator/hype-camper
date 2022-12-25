@@ -6,13 +6,18 @@ const path = require('path');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utilities/ExpressError');
+const passport = require('passport');
+const passportLocal = require('passport-local');
+const User = require('./models/user');
 
+const userRoutes = require('./routes/users');
 const campgrounds = require('./routes/campgrounds');
 const reviews = require('./routes/reviews');
 
 main().catch((err) => console.log('Error: ', err));
 
 async function main() {
+  mongoose.set('strictQuery', false);
   await mongoose.connect('mongodb://localhost:27017/hype-camper');
   console.log('Database connected');
 }
@@ -37,8 +42,15 @@ const sessionConfig = {
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
 };
+
 app.use(session(sessionConfig));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new passportLocal(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.success = req.flash('success');
@@ -46,6 +58,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/', userRoutes);
 app.use('/campgrounds', campgrounds);
 app.use('/campgrounds/:id/reviews', reviews);
 
