@@ -11,8 +11,8 @@ const passportLocal = require('passport-local');
 const User = require('./models/user');
 
 const userRoutes = require('./routes/users');
-const campgrounds = require('./routes/campgrounds');
-const reviews = require('./routes/reviews');
+const campgroundRoutes = require('./routes/campgrounds');
+const reviewRoutes = require('./routes/reviews');
 
 main().catch((err) => console.log('Error: ', err));
 
@@ -59,8 +59,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/', userRoutes);
-app.use('/campgrounds', campgrounds);
-app.use('/campgrounds/:id/reviews', reviews);
+app.use('/campgrounds', campgroundRoutes);
+app.use('/campgrounds/:id/reviews', reviewRoutes);
 
 app.get('/', (req, res) => {
   res.render('test');
