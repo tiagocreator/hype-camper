@@ -12,7 +12,7 @@
         <li class="list-group-item">$<%= campground.price %>/night</li>
         <li class="list-group-item">Submitted by: <em><%= campground.owner.username %></em></li>
       </ul>
-      <% if(currentUser && campground.owner.equals(currentUser)) { %> 
+      <% if(currentUser && campground.owner.equals(currentUser._id)) { %> 
       <div class="card-body">
         <a href="/campgrounds/<%=campground._id%>/edit" class="card-link btn btn-info">Edit</a>
         <form class="d-inline ms-3" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
@@ -24,6 +24,7 @@
     </div>
   </div>
   <div class="col-6">
+    <% if(currentUser) { %> 
     <h2>Leave a Review</h2>
     <form class="mb-4 validated-form" action="/campgrounds/<%=campground._id%>/reviews" method="POST" novalidate>
       <div class="mb-4">
@@ -37,14 +38,19 @@
       </div>
       <button class="btn btn-success">Add Review</button>
     </form>
+    <% } %>
+
     <% for(let review of campground.reviews) { %> 
     <div class="card mb-3">
       <div class="card-body">
         <h5 class="card-title">Rating: <%= review.rating %> </h5>
+        <h6 class="card-subtitle mb-2 text-muted">By: <%= review.owner.username %> </h6>
         <p class="card-text">Review: <%= review.body %> </p>
+        <% if(currentUser && review.owner.equals(currentUser._id)) { %> 
         <form action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
           <button class="btn btn-sm btn-danger">Delete</button>
         </form>
+        <% } %> 
       </div>
     </div>
     <% } %> </div>
