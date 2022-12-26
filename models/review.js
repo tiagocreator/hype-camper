@@ -8,6 +8,10 @@ const reviewSchema = new Schema({
   rating: {
     type: Number,
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
 });
 
 module.exports = mongoose.model('Review', reviewSchema);
