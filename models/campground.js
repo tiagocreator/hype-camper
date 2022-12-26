@@ -15,6 +15,10 @@ const CampgroundSchema = Schema({
   location: {
     type: String,
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
   image: {
     type: String,
   },
