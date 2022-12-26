@@ -15,8 +15,13 @@ router.post(
       const { email, username, password } = req.body;
       const user = new User({ email, username });
       const registeredUser = await User.register(user, password);
-      req.flash('success', 'Welcome to Hype Camper, thanks for registering!');
-      res.redirect('/campgrounds');
+      req.login(registeredUser, (e) => {
+        if (e) {
+          return;
+        }
+        req.flash('success', 'Welcome to Hype Camper, thanks for registering!');
+        res.redirect('/campgrounds');
+      });
     } catch (e) {
       req.flash('error', e.message);
       res.redirect('register');
