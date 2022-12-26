@@ -13,6 +13,7 @@ router.post(
     const { id } = req.params;
     const campground = await Campground.findById(id);
     const review = new Review(req.body.review);
+    review.owner = req.user._id;
     campground.reviews.push(review);
     await review.save();
     await campground.save();
