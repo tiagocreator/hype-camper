@@ -4,20 +4,21 @@ const router = express.Router();
 const catchAsync = require('../utilities/CatchAsync');
 const users = require('../controllers/users');
 
-router.get('/register', users.renderRegisterPage);
+router
+  .route('/register')
+  .get(users.renderRegisterPage)
+  .post(catchAsync(users.createNewUser));
 
-router.post('/register', catchAsync(users.createNewUser));
-
-router.get('/login', users.renderLoginPage);
-
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    failureFlash: true,
-    failureRedirect: '/login',
-  }),
-  users.login
-);
+router
+  .route('/login')
+  .get(users.renderLoginPage)
+  .post(
+    passport.authenticate('local', {
+      failureFlash: true,
+      failureRedirect: '/login',
+    }),
+    users.login
+  );
 
 router.get('/logout', users.logout);
 
