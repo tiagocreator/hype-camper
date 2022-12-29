@@ -35,6 +35,15 @@
         <input type="file" class="form-control" name="image" id="image" multiple >
       </div>
       <div class="mb-3">
+        <% campground.images.forEach((image, index) => { %> 
+          <img class="img-thumbnail" src="<%= image.url %>" alt="">
+          <div class="form-check-inline">
+            <input type="checkbox" id="image-<%= index %>" name="deleteImages[]" value="<%= image.filename %>">
+          </div>
+          <label for="image-<%= index %>">Delete?</label>
+        <% }) %> 
+      </div>
+      <div class="mb-3">
         <button class="btn btn-info">Update Campground</button>
       </div>
       <div class="mb-4">
