@@ -1,7 +1,11 @@
 <% layout('layouts/boilerplate') %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/starability/2.4.2/starability-minified/starability-basic.min.css" integrity="sha512-RfY7fbfAALgVZojeQW7Nqb5vnTx1vBu+OZwIxkRkLfnPvtsw9nl1Wpn5rknlwc3VbywNwVgmDwgwVdJb8DYWpA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css' rel='stylesheet' />
+
 <div class="row">
   <div class="col-6">
+    <div id='map' style='width: 400px; height: 300px;'></div>
     <div id="carousel" class="carousel slide">
       <div class="carousel-inner">
         <% campground.images.forEach((image, index) => { %>
@@ -84,3 +88,9 @@
     </div>
     <% } %> </div>
 </div>
+
+<script>
+  const mbToken = '<%- process.env.MAPBOX_TOKEN %>'
+  const campground = <%- JSON.stringify(campground) %>
+</script>
+<script src="/scripts/campgroundPageMap.js"></script>
