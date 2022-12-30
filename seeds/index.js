@@ -44,6 +44,10 @@ const seedDB = async () => {
           filename: 'hype-camper/rrn4dn6fuhypycyjdn8h',
         },
       ],
+      geometry: { 
+        type: 'Point', 
+        coordinates: [-122.29214, 47.184901] 
+      },
     });
     await camp.save();
   }
