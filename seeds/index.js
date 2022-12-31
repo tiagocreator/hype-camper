@@ -15,13 +15,21 @@ async function main() {
 const randomArr = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 const seedDB = async () => {
+  const campgroundsCount = 50;
   await Campground.deleteMany({});
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < campgroundsCount; i++) {
     const randomCities = Math.floor(Math.random() * 1000);
-    const randomPrice = Math.floor(Math.random() * 20) + 10;
+    const randomPrice = Math.floor(Math.random() * 30) + 10;
     const camp = new Campground({
       owner: '63a9c345eb116febd50c0b79',
       location: `${cities[randomCities].city}, ${cities[randomCities].state}`,
+      geometry: {
+        type: 'Point',
+        coordinates: [
+          cities[randomCities].longitude,
+          cities[randomCities].latitude,
+        ],
+      },
       title: `${randomArr(descriptors)} ${randomArr(places)}`,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc euismod, diam at laoreet suscipit, nibh elit iaculis arcu, sit amet commodo ligula sapien ut arcu. Vivamus ut convallis arcu. Donec vehicula, dolor at iaculis vestibulum, enim dolor efficitur tortor, id convallis felis odio ut erat.',
@@ -44,10 +52,6 @@ const seedDB = async () => {
           filename: 'hype-camper/rrn4dn6fuhypycyjdn8h',
         },
       ],
-      geometry: { 
-        type: 'Point', 
-        coordinates: [-122.29214, 47.184901] 
-      },
     });
     await camp.save();
   }
