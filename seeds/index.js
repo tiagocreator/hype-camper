@@ -15,7 +15,7 @@ async function main() {
 const randomArr = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 const seedDB = async () => {
-  const campgroundsCount = 50;
+  const campgroundsCount = 200;
   await Campground.deleteMany({});
   for (let i = 0; i < campgroundsCount; i++) {
     const randomCities = Math.floor(Math.random() * 1000);
@@ -36,20 +36,20 @@ const seedDB = async () => {
       price: randomPrice,
       images: [
         {
-          url: 'https://res.cloudinary.com/dzatbpzyq/image/upload/v1672281260/hype-camper/gsvua0spvtuhtb18dfyv.jpg',
-          filename: 'hype-camper/gsvua0spvtuhtb18dfyv',
+          url: 'https://res.cloudinary.com/dzatbpzyq/image/upload/v1672715904/hype-camper/wdnbw61vtweplqcqnjnn.jpg',
+          filename: 'hype-camper/wdnbw61vtweplqcqnjnn',
         },
         {
-          url: 'https://res.cloudinary.com/dzatbpzyq/image/upload/v1672281260/hype-camper/ci0pqhclubxc4zgdqdfl.jpg',
-          filename: 'hype-camper/ci0pqhclubxc4zgdqdfl',
+          url: 'https://res.cloudinary.com/dzatbpzyq/image/upload/v1672715905/hype-camper/rqkafjb35e05bvqdjw3m.jpg',
+          filename: 'hype-camper/rqkafjb35e05bvqdjw3m',
         },
         {
-          url: 'https://res.cloudinary.com/dzatbpzyq/image/upload/v1672281261/hype-camper/tvjdlvhrbvcujfjsabhn.jpg',
-          filename: 'hype-camper/tvjdlvhrbvcujfjsabhn',
+          url: 'https://res.cloudinary.com/dzatbpzyq/image/upload/v1672715906/hype-camper/odlpzq00ddeg8bs0oxob.jpg',
+          filename: 'hype-camper/odlpzq00ddeg8bs0oxob',
         },
         {
-          url: 'https://res.cloudinary.com/dzatbpzyq/image/upload/v1672281261/hype-camper/rrn4dn6fuhypycyjdn8h.jpg',
-          filename: 'hype-camper/rrn4dn6fuhypycyjdn8h',
+          url: 'https://res.cloudinary.com/dzatbpzyq/image/upload/v1672375861/hype-camper/dzzgrcfl1frqzd9hr67d.jpg',
+          filename: 'hype-camper/dzzgrcfl1frqzd9hr67d',
         },
       ],
     });
