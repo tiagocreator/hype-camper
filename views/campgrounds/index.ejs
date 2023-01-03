@@ -2,7 +2,7 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css' rel='stylesheet' />
 
-<div id="map"></div>
+<div id="index-map"></div>
 <h1 class="mb-3">All Campgrounds</h1>
 <div><a class="btn btn-success mb-5" href="/campgrounds/new">Add Campground</a></div>
 <ul>
@@ -28,14 +28,6 @@
   </div>
   <% } %>
 </ul>
-
-<style>
-  #map {
-    width: 100%;
-    height: 500px;
-    margin: auto;
-  }
-</style>
 
 <script>
   const mbToken = '<%- process.env.MAPBOX_TOKEN %>'
