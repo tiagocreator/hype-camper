@@ -41,9 +41,11 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressMongoSanitize());
 
+const sessionSecret = process.env.SESSION_SECRET;
+
 const store = new ConnectMongo({
   mongoUrl: localUrl,
-  secret: 'test_secret',
+  secret: sessionSecret,
   touchAfter: 24 * 60 * 60,
 });
 
@@ -54,7 +56,7 @@ store.on('error', (e) => {
 const sessionConfig = {
   store: store,
   name: 'cookie',
-  secret: 'test_secret',
+  secret: sessionSecret,
   resave: false,
   saveUninitialized: true,
   cookie: {
