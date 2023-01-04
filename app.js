@@ -6,6 +6,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
+const ConnectMongo = require('connect-mongo');
 const path = require('path');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
@@ -19,11 +20,13 @@ const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 
+const localUrl = 'mongodb://localhost:27017/hype-camper';
+
 main().catch((err) => console.log('Error: ', err));
 
 async function main() {
   mongoose.set('strictQuery', false);
-  await mongoose.connect('mongodb://localhost:27017/hype-camper');
+  await mongoose.connect(localUrl);
   console.log('Database connected');
 }
 
@@ -38,7 +41,18 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressMongoSanitize());
 
+const store = new ConnectMongo({
+  mongoUrl: localUrl,
+  secret: 'test_secret',
+  touchAfter: 24 * 60 * 60,
+});
+
+store.on('error', (e) => {
+  console.log('Database error: ', e);
+});
+
 const sessionConfig = {
+  store: store,
   name: 'cookie',
   secret: 'test_secret',
   resave: false,
