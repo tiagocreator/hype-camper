@@ -104,6 +104,10 @@ app.use((err, req, res, next) => {
   res.status(status).render('error', { err });
 });
 
-app.listen(3000, () => {
-  console.log('Serving on port 3000');
+const herokuPort = process.env.PORT;
+const localPort = 3000;
+const appPort = herokuPort || localPort;
+
+app.listen(appPort, () => {
+  console.log(`Serving on port ${appPort}`);
 });
