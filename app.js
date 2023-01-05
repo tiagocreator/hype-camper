@@ -20,13 +20,15 @@ const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 
+const atlasUrl = process.env.ATLAS_URL;
 const localUrl = 'mongodb://localhost:27017/hype-camper';
+const dbUrl = atlasUrl || localUrl;
 
 main().catch((err) => console.log('Error: ', err));
 
 async function main() {
   mongoose.set('strictQuery', false);
-  await mongoose.connect(localUrl);
+  await mongoose.connect(dbUrl);
   console.log('Database connected');
 }
 
@@ -41,10 +43,12 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressMongoSanitize());
 
-const sessionSecret = process.env.SESSION_SECRET;
+const envSecret = process.env.SESSION_SECRET;
+const localSecret = 'test-secret';
+const sessionSecret = envSecret || localSecret;
 
 const store = new ConnectMongo({
-  mongoUrl: localUrl,
+  mongoUrl: dbUrl,
   secret: sessionSecret,
   touchAfter: 24 * 60 * 60,
 });
