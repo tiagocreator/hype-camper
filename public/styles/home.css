@@ -8,15 +8,30 @@ body {
 }
 
 .cover-container {
-  max-width: 60vw;
+  max-width: 95vw;
+}
+
+@media (min-width: 768px) {
+  .cover-container {
+    max-width: 75vw;
+  }
 }
 
 .nav-link {
+  float: right;
   padding: 0.25rem 0;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.7);
   margin-left: 1rem;
   border-bottom: 0.25rem solid transparent;
+}
+
+@media (max-width: 991px) {
+  .nav-link {
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
 }
 
 .nav-link:hover {
