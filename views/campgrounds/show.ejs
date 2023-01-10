@@ -4,7 +4,7 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css' rel='stylesheet' />
 
 <div class="row">
-  <div class="col-6">
+  <div class="col-md-6">
     <div id='map'></div>
     <div id="carousel" class="carousel slide">
       <div class="carousel-inner">
@@ -46,7 +46,7 @@
       <div class="card-footer"><a href="/campgrounds">All Campgrounds</a></div>
     </div>
   </div>
-  <div class="col-6">
+  <div class="col-md-6">
     <% if(currentUser) { %> 
     <h3>Leave a Review</h3>
     <form class="mb-4 validated-form" action="/campgrounds/<%=campground._id%>/reviews" method="POST" novalidate>
@@ -71,8 +71,9 @@
       </div>
       <button class="btn btn-success">Add Review</button>
     </form>
-    <% } %>
-
+    <% } else { %>
+    <h3 class="mb-3 mt-4 mt-md-0">Reviews</h3>
+    <% } %> 
     <% for(let review of campground.reviews) { %> 
     <div class="card mb-3">
       <div class="card-body">
