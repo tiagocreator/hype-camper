@@ -15,7 +15,7 @@ ____
 
 ____
 
-## Images
+### Images
 
 #### Home Page:
 ![hype-camper-3](https://user-images.githubusercontent.com/82607849/211166972-4957a3dd-dfb4-4e6f-a9fa-b2146059672a.jpeg)
@@ -28,7 +28,7 @@ ____
 
 ____
 
-## Getting Started:
+### Getting Started:
 
 To a get development copy up and running in your local machine follow this simple steps:
 
@@ -53,7 +53,9 @@ Run nodemon app.js in the terminal on the project folder.
 
 Access it with "http://localhost:3000/"
 
-#### Seeding with fake campgrounds
+---
+
+### Seeding with fake campgrounds
 For testing purposes, you can seed fake campgrounds with random images and locations, for that you need to run:
 ```
 node seeds/index.js
@@ -62,11 +64,15 @@ __Alert:__ That will __delete ALL__ campgrounds, reviews you have!!! And automat
 
 This automatically generates 200 campgrounds with random locations and images, to change the amount of the campgrounds that are generated, go to seeds/index.js file and change the __number__ amount in __campgroundsCount__ variable. Them run the code above again, that will delete ALL campgrounds, reviews you have and generate everything again.
 
-## License
+---
+
+### License
 
 Distributed under the __MIT__ License. See LICENSE.txt for more information.
 
-## Contributing
+### Contributing
+
+---
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
