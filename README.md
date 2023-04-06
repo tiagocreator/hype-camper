@@ -70,9 +70,9 @@ This automatically generates 200 campgrounds with random locations and images, t
 
 Distributed under the __MIT__ License. See LICENSE.txt for more information.
 
-### Contributing
-
 ---
+
+### Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
