@@ -1,6 +1,6 @@
 ## Hype Camper
 
-### [Live Preview](https://hype-camper.herokuapp.com/)
+### [Live Preview](https://hype-camper.cyclic.app/)
 
 #### Hype Camper is a full stack CRUD website where users can create, review and manage campgrounds. This project was part of Colt Steele's full stack web dev course.
 #### This project was created using Node.js, Express, MongoDB, EJS, and Bootstrap. Passport.js was used to handle authentication.
@@ -77,3 +77,7 @@ Distributed under the __MIT__ License. See LICENSE.txt for more information.
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 If you have a suggestion that would make this better, please fork the repository and create a pull request. You can also simply open an issue with the tag "improvement". Also please give to give the project a star! Thanks.
+
+---
+
+### [Live Preview](https://hype-camper.cyclic.app/)
